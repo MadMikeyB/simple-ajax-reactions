@@ -9,12 +9,12 @@ $(document).ready(function() {
 			'url'	: 'react.php',
 			'data'	: 'post_id=' + post_id + '&user_id=1&reaction=' + id,
 			success:function(msg) {
-				console.log(msg);
 				if (msg == 'err') {
 					alert('You have already reacted to this.');
 				}
 			} 
 		});
+		$(this).children('.total').html(++num_likes);
 	});
 
 });
