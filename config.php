@@ -1,11 +1,5 @@
 <?php
-
+// Set up DB environment
 require 'env.php';
-
-$config = [
-	'dbname'	=> getenv('dbname'),
-	'dbuser'	=> getenv('dbuser'),
-	'dbpass'	=> getenv('dbpass'),
-	'dbhost'	=> getenv('dbhost'),
-];
-
+// Constants
+define('VIEW_PATH', __DIR__ . '/views/');
