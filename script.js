@@ -14,6 +14,7 @@ $(document).ready(function() {
 				}
 			} 
 		});
+		$(this).attr('disabled', 'disabled');
 		$(this).children('.total').html(++num_likes);
 	});
 
