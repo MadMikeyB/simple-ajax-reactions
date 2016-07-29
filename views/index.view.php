@@ -7,6 +7,7 @@
 	<title>Like / Dislike</title><!-- Bootstrap CSS -->
 	<link crossorigin="anonymous" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" rel="stylesheet">
 	<link href="//bootswatch.com/paper/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 		<script src="//oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -44,9 +45,35 @@
 				<?php foreach ( $posts as $post): ?>
 				<div class="blog-post">
 					<h2 class="blog-post-title"><?php echo $post['title'] ?></h2>
-					<p class="blog-post-meta"><?php echo $post['datetime'] ?> by <a href="#"><?php echo $post['user_id'] ?></a></p>
+					<p class="blog-post-meta"><?php echo $post['datetime'] ?> by <a href="#"><?php echo $post['username'] ?></a></p>
 					<?php echo $post['content'] ?>
+					<p class="blog-post-bottom">
+						<div class="btn-toolbar  pull-right">
+							<div class="btn-group">
+								<button type="button" id="like" data-post-id="<?php echo $post['id'] ?>" class="reaction btn btn-default">
+									<i class="em em-thumbsup"></i> <span class="total"><?php echo $post['reactions']['like'] ?></span>
+								</button>
+
+								<button type="button" id="dislike" data-post-id="<?php echo $post['id'] ?>" class="reaction btn btn-default">
+									<i class="em em-thumbsdown"></i> <span class="total"><?php echo $post['reactions']['dislike'] ?></span>
+								</button>
+
+								<button type="button" id="smile" data-post-id="<?php echo $post['id'] ?>" class="reaction btn btn-default">
+									<i class="em em-smile"></i> <span class="total"><?php echo $post['reactions']['smile'] ?></span>
+								</button>
+
+								<button type="button" id="angry" data-post-id="<?php echo $post['id'] ?>" class="reaction btn btn-default">
+									<i class="em em-angry"></i> <span class="total"><?php echo $post['reactions']['angry'] ?></span>
+								</button>
+
+								<button type="button" id="love" data-post-id="<?php echo $post['id'] ?>" class="reaction btn btn-default">
+									<i class="em em-heart"></i> <span class="total"><?php echo $post['reactions']['love'] ?></span>
+								</button>
+							</div>
+						</div>
+					</p>
 				</div><!-- /.blog-post -->
+				<div class="clear clearfix"></div>
 				<?php endforeach; ?>
 				<nav>
 					<ul class="pager">
@@ -129,5 +156,6 @@
 	 
 	<script crossorigin="anonymous" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
 	</script>
+	<script src="script.js"></script>
 </body>
 </html>
