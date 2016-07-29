@@ -3,10 +3,6 @@
 require 'config.php';
 require 'database.php';
 
-$db = new DB(getenv('dbhost'), getenv('dbname'), getenv('dbuser'), getenv('dbpass'));
-
-$posts = $db->query('select * from posts');
-
-print_r($posts); exit;
+$posts = DB::query('select * from posts order by id desc');
 
 require VIEW_PATH . 'index.view.php';

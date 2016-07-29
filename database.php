@@ -1,11 +1,34 @@
 <?php
 
 class DB {
+
+	/**
+	 * Check if class already has an instance
+	 * @var null
+	 */
     protected static $instance = null;
 
+    public static $query;
+    
+    /**
+     * constructor
+     * 
+     * @return  null
+     */
     public function __construct() {}
+    
+    /**
+     * cloning
+     * 
+     * @return null
+     */
     public function __clone() {}
 
+    /**
+     * Instantiate the Class
+     * 
+     * @return object
+     */
  	public static function instance()
     {
         if (self::$instance === null)
@@ -21,42 +44,29 @@ class DB {
         return self::$instance;
     }
 
+    /**
+     * Instantiate the class statically
+     * 
+     * @param  string
+     * @param  array
+     * @return instance
+     */
     public static function __callStatic($method, $args)
     {
         return call_user_func_array(array(self::instance(), $method), $args);
     }
 
-
-	public function query($query)
+    /**
+     * Perform a PDO Database Query
+     * 
+     * @param  string
+     * @return array 
+     */
+	public static function query($query)
 	{
 		$statement = static::instance()->prepare($query);
 		$statement->execute();
 		return $statement->fetchAll();
 	}
-
-	public function select()
-	{
-		// ...
-	}
-
-	public function count()
-	{
-		// ...
-	}
-
-	public function getLastInsertId()
-	{
-		// ...
-	}
-
-	public function save()
-	{
-		// ...
-	}
-
-	public function update()
-	{
-		// ...
-	}
-
+	
 }
